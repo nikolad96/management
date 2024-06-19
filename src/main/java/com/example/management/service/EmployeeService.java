@@ -23,6 +23,7 @@ public class EmployeeService implements IEmployeeService{
     @Override
     public Employee updateEmployee(Employee employee, Long id) {
         getEmployeeById(id);
+        employee.setId(id);
         return employeeRepository.save(employee);
     }
 
