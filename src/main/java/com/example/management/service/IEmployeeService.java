@@ -2,12 +2,18 @@ package com.example.management.service;
 
 import com.example.management.model.Employee;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface IEmployeeService {
-    public Employee saveEmployee(Employee employee);
-    public Employee updateEmployee(Employee employee, Long id);
-    public void deleteEmployeeById(Long id);
-    public List<Employee> getAllEmployees();
-    public Employee getEmployeeById(Long id);
+    Employee saveEmployee(Employee employee);
+    Employee updateEmployee(Employee employee, Long id);
+    void deleteEmployeeById(Long id);
+    List<Employee> getAllEmployees();
+    Employee getEmployeeById(Long id);
+    List<Employee> findByPositionAndDepartment(String position, String department);
+    List<Employee> findByPosition(String position);
+
+    List<Employee> findBySalaryAbove(BigDecimal salary);
+
 }

@@ -1,6 +1,8 @@
 package com.example.management.model;
 
 
+import com.example.management.model.audit.AuditEntityListener;
+import com.example.management.model.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,8 +15,9 @@ import java.math.BigDecimal;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditEntityListener.class)
 @Table(name="employees")
-public class Employee {
+public class Employee extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,4 +38,10 @@ public class Employee {
 
     @Column(name = "salary")
     private BigDecimal salary;
+
+
+    @Override
+    public Long getObjectId() {
+        return getId();
+    }
 }
